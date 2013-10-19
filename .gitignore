@@ -56,3 +56,8 @@ Icon
 Session.vim
 .netrwhist
 *~
+
+# https://raw.github.com/github/gitignore/master/Global/TextMate.gitignore
+*.tmproj
+*.tmproject
+tmtags
