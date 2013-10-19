@@ -24,7 +24,9 @@ class BattlesController < ApplicationController
   # POST /battles
   # POST /battles.json
   def create
-    @battle = Battle.new(battle_params)
+    rubygem_x = Rubygem.find_or_create_by(battle_params[:rubygem_x_attributes])
+    rubygem_y = Rubygem.find_or_create_by(battle_params[:rubygem_y_attributes])
+    @battle = Battle.find_or_create_with_gems(rubygem_x, rubygem_y)
 
     respond_to do |format|
       if @battle.save
