@@ -72,6 +72,9 @@ role :db,  LINODE_SERVER_HOSTNAME, :primary => true
 
 # Add Configuration Files & Compile Assets
 after 'deploy:update_code' do
+  # Upload GitHub API credentials
+  upload 'config/initializers/octokit.rb', "#{release_path}/config/initializers/octokit.rb"
+
   # Setup Configuration
   run "cp #{shared_path}/config/database.yml #{release_path}/config/database.yml"
 
