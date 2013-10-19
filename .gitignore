@@ -63,3 +63,6 @@ Session.vim
 *.tmproj
 *.tmproject
 tmtags
+
+# Ignore credentials
+config/initializers/octokit.rb
