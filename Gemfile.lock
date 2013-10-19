@@ -1,6 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    RedCloth (4.2.9)
     actionmailer (4.0.0)
       actionpack (= 4.0.0)
       mail (~> 2.5.3)
@@ -47,6 +48,8 @@ GEM
     execjs (2.0.2)
     faraday (0.8.8)
       multipart-post (~> 1.2.0)
+    github-markdown (0.5.5)
+    github-markup (0.7.5)
     high_voltage (2.0.0)
     highline (1.6.20)
     hike (1.2.3)
@@ -139,9 +142,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  RedCloth
   awesome_print
   capistrano (~> 2.15)
   coffee-rails (~> 4.0.0)
+  github-markdown
+  github-markup
   high_voltage
   jbuilder (~> 1.2)
   jquery-rails

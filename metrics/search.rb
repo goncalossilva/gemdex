@@ -1,11 +1,10 @@
 #!/usr/bin/env ruby
 
-require 'ap'
 require '../config/application'
-require '../config/initializers/octokit'
 
 print "Search for: "
 query = gets.chomp
+
 result = Octokit.search_repositories(
   query + " language:ruby fork:true",
   {
