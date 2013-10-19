@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Rubygem x:</strong>
+  <%= @battle.rubygem_x_id %>
+</p>
+
+<p>
+  <strong>Rubygem y:</strong>
+  <%= @battle.rubygem_y_id %>
+</p>
+
+<%= link_to 'Edit', edit_battle_path(@battle) %> |
+<%= link_to 'Back', battles_path %>
