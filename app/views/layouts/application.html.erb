@@ -8,6 +8,8 @@
 </head>
 <body>
   <%= yield %>
+
+  <%= link_to t('footer.links.menu.about'), page_path(:about) %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 </body>
 </html>

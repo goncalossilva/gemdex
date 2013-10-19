@@ -51,3 +51,7 @@ group :production do
   gem 'mysql2' # If using mysql in development, this can be outside the production group.
   gem 'therubyracer'
 end
+
+# for static pages
+gem 'high_voltage'
+gem 'octokit', '~> 2.0'
