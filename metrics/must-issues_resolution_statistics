@@ -5,7 +5,6 @@
 #   - média do tempo de resolução de issues
 #   - % abertos vs. fechados
 
-require 'ap'
 require '../config/application'
 require '../config/initializers/octokit'
 
@@ -42,6 +41,9 @@ ratio = open_count / total_count
 
 @resolution_times = []
 closed_issues.each do |issue|
+  if issue.closed_at < issue.created_at
+    next
+  end
   closing_time = ((issue.closed_at - issue.created_at) / 1.day).to_i
   @resolution_times.push closing_time
 end
