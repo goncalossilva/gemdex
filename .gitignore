@@ -49,3 +49,10 @@ Icon
 # Files that might appear on external disk
 .Spotlight-V100
 .Trashes
+
+# https://raw.github.com/github/gitignore/master/Global/vim.gitignore
+*.s[a-w][a-z]
+*.un~
+Session.vim
+.netrwhist
+*~
