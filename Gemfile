@@ -54,3 +54,4 @@ end
 
 # for static pages
 gem 'high_voltage'
+gem 'octokit', '~> 2.0'
