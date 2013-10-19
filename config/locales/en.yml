@@ -23,3 +23,8 @@ en:
   footer:
     links:
       about: "About"
+  global:
+    battle: "Battle"
+    browse: "Browse"
+    go: "Go"
+    vs: "Vs."
