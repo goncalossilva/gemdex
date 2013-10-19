@@ -16,6 +16,8 @@ To deploy a new version to the server, do the following on the project root:
     # otherwise
     bin/cap deploy
 
+Note: this assumes you did `bundle install --binstubs` as per [the instructions](https://github.com/railsrumble/community/wiki/Linode-StackScripts). If not, substitute `bin/cap` with `bundle exec cap`
+
 ## Public address
 
 You can reach the project homepage at http://rumble.iamto.me
