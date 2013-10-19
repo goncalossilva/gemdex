@@ -69,6 +69,6 @@ class BattlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def battle_params
-      params.require(:battle).permit(:rubygem_x_id, :rubygem_y_id)
+      params.require(:battle).permit(rubygem_x_attributes: [:name], rubygem_y_attributes: [:name])
     end
 end
