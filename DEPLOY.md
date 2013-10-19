@@ -15,3 +15,7 @@ To deploy a new version to the server, do the following on the project root:
     bin/cap deploy:migrations
     # otherwise
     bin/cap deploy
+
+## Public address
+
+You can reach the project homepage at http://rumble.iamto.me
