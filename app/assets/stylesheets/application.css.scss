@@ -19,22 +19,22 @@
 
 @font-face {
 	font-family: 'Din-OSP';
-	src: url('Din-OSP.eot');
-	src: url('Din-OSP.eot?iefix') format('eot'),
-    	url('Din-OSP.woff') format('woff'),
-    	url('Din-OSP.ttf') format('truetype'),
-    	url('Din-OSP.svg') format('svg');
+	src: url('<%= asset_path "Din-OSP.eot" %>');
+	src: url('<%= asset_path "Din-OSP.eot?iefix') format('eot" %>'),
+    	url('<%= asset_path "Din-OSP.woff') format('woff" %>'),
+    	url('<%= asset_path "Din-OSP.ttf') format('truetype" %>'),
+    	url('<%= asset_path "Din-OSP.svg') format('svg" %>');
 	font-weight: normal;
 	font-style: normal;
 }
 
 @font-face {
 	font-family: 'Din-Overlay';
-	src: url('Din-Overlay.eot');
-	src: url('Din-Overlay.eot?iefix') format('eot'),
-    	url('Din-Overlay.woff') format('woff'),
-    	url('Din-Overlay.ttf') format('truetype'),
-		url('Din-Overlay.svg') format('svg');
+	src: url('<%= asset_path "Din-Overlay.eot" %>');
+	src: url('<%= asset_path "Din-Overlay.eot?iefix') format('eot" %>'),
+    	url('<%= asset_path "Din-Overlay.woff') format('woff" %>'),
+    	url('<%= asset_path "Din-Overlay.ttf') format('truetype" %>'),
+		url('<%= asset_path "Din-Overlay.svg') format('svg" %>');
 	font-weight: normal;
 	font-style: normal;
 }
