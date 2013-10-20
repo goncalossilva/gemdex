@@ -61,6 +61,7 @@ gem 'awesome_print'
 
 # background jobs
 gem 'delayed_job_active_record', '~> 4.0'
+gem 'daemons'
 
 # for documentation analysis
 gem 'github-markup'
