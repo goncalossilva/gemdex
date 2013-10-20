@@ -137,7 +137,7 @@ header + form {
 	margin-top: 40px;
 }
 
-form input {
+form input[type="text"] {
 	color: #fff;
 	background: #8bc53e;
 	border: 0;
@@ -153,9 +153,9 @@ form input {
 	font-family: dosis, helvetica, arial, sans-serif;
 }
 
-input:focus { outline-color: $primary-color; }
+input[type="text"]:focus { outline-color: $primary-color; }
 
-form.battle input {
+form.battle input[type="text"] {
 	width: 300px;
 }
 
@@ -221,24 +221,27 @@ section.card {
 	position: relative;
 	float: left;
 	margin: 0 20px 100px;
-	background: #fff;
+	background: rgba(251,145,110,.3);
 }
 
-section.loser *{
-	opacity: .5;
+section.loser{
+	background: #fff;
+	box-shadow: 1px 1px 5px rgba(0,0,0,.3);
 }
 
 section.card h2 {
-	font-size: 40px;
-	font-weight: bold;
-	padding: 15px 0 30px 0;
+	font-size: 50px;
+	padding: 10px 80px 30px 0;
 	color: #a00;
-	text-shadow: 0 0 2px rgb(50,50,50);
+	line-height: 1;
+	text-shadow: 0 0 1px rgb(50,50,50);
+}
+section.loser h2 {
+	color: rgb(50,50,50);
 }
 
 section.card h3 {
 	font-size: 40px;
-	font-weight: bold;
 	border-radius: 1000px;
 	background: #a00;
 	float: right;
@@ -251,7 +254,7 @@ section.card h3 {
 	top: 15px;
 	color: #fff;
 	line-height: 1em;
-	text-shadow: 0 0 2px rgb(50,50,50);
+	text-shadow: 0 0 1px rgb(50,50,50);
 }
 	section.loser h3 {
 		background: rgb(40, 40, 40);
@@ -296,7 +299,7 @@ section.card ul.charts li {
 	border-radius: 4px;
 	padding: 5px 0;
 	margin-bottom: 10px;
-	color: rgba(255,255,255,.5);
+	color: rgba(255,255,255,.6);
 }
 section.card ul.charts li.activity{
 	background: #fb916e;
