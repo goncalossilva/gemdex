@@ -1,4 +1,5 @@
 class SearchesController < ApplicationController
+  include Sanitizer
   before_action :set_search, only: [:show, :edit, :update, :destroy]
 
   # # GET /searches
@@ -64,6 +65,6 @@ class SearchesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def search_params
-      params.require(:search).permit(:query)
+      sanitized(params.require(:search).permit(:query))
     end
 end
