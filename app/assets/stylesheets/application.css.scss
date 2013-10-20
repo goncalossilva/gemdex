@@ -15,15 +15,43 @@
 @import "settings.css.scss";
 @import "home.css.scss";
 @import "searches.css.scss";
+@import url(http://fonts.googleapis.com/css?family=Dosis:500,700);
+
+@font-face {
+	font-family: 'Din-OSP';
+	src: url('Din-OSP.eot');
+	src: url('Din-OSP.eot?iefix') format('eot'),
+    	url('Din-OSP.woff') format('woff'),
+    	url('Din-OSP.ttf') format('truetype'),
+    	url('Din-OSP.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Din-Overlay';
+	src: url('Din-Overlay.eot');
+	src: url('Din-Overlay.eot?iefix') format('eot'),
+    	url('Din-Overlay.woff') format('woff'),
+    	url('Din-Overlay.ttf') format('truetype'),
+		url('Din-Overlay.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
 
 html {
 	background: #a00 url(bg.png) center center;
-	font-family: "pt sans", helvetica, arial, sans-serif;
+	font-family: dosis, helvetica, arial, sans-serif;
 	height: 100%;
 }
 
-h1, h2, h3 {
-	font-family: "pt sans narrow", helvetica, arial, sans-serif;
+h1 a, h2, h3 {
+	font-family: 'Din-OSP', helvetica, arial, sans-serif;
+}
+h1 a .colorfont-overlay,
+h2 .colorfont-overlay,
+h3 .colorfont-overlay {
+	font-family: 'Din-Overlay', helvetica, arial, sans-serif;
 }
 
 body {
@@ -32,11 +60,11 @@ body {
 	line-height: 1.3;
 	position: relative;
 	min-height: 100%;
-  height: 1px;
+	height: 1px;
 }
 
 div.page {
-	background: #fff url(ballon.png) no-repeat 0 0;
+	background: #fff url(balao.gif) no-repeat 0 0;
 	width: 780px;
 	margin: 0 auto;
 	padding: 0 110px 0;
@@ -58,26 +86,55 @@ div.page {
 }
 
 h1 {
-	font-size: 80px;
-	text-shadow: inset 0 0 20px green;
-	text-align: center;
 	padding: 80px 0 80px;
-	font-weight: bold;
+	text-align: center;
 }
 
 h1 a {
-	color: #a00;
 	display: inline-block;
+	font-size: 120px;
+	text-align: center;
+	color: #a00;
 	text-decoration: none;
-	text-shadow: 0 -1px 0 rgb(50, 50, 50);
-	margin: 0 0 0 -90px -100px;
-	padding: 0 0 0 100px;
-	background: url(gems.png) no-repeat 0 bottom;
+	position: relative;
+}
+
+h1 a:before {
+		content: " ";
+	background: url(logo-blue.png) no-repeat;
+	width: 90px;
+	height: 56px;
+	position: absolute;
+	z-index: 0;
+	display: block;
+	bottom: 23px;
+	left: -32px;
+}
+
+h1 a:after {
+	content: " ";
+	background: url(logo.png) no-repeat;
+	width: 90px;
+	height: 56px;
+	position: absolute;
+	z-index: 1000;
+	display: block;
+	bottom: 25px;
+	right: -75px;
+}
+
+h1 a .colorfont-overlay {
+	color: 	#e7653d;
+		text-shadow: 0 0 2px rgb(50,50,50);
 
 }
 
 form {
 	text-align: center;
+}
+
+header + form {
+	margin-top: 40px;
 }
 
 form input {
@@ -92,6 +149,8 @@ form input {
 	text-align: center;
 	border-radius: 2px;
 	box-shadow: inset 0 0 5px rgba(50, 50, 50, .5);
+	vertical-align: bottom;
+	font-family: dosis, helvetica, arial, sans-serif;
 }
 
 input:focus { outline-color: $primary-color; }
@@ -102,12 +161,16 @@ form.battle input {
 
 form span {
 	padding: 0 10px;
+	position: relative;
+	display: inline-block;
+	vertical-align: bottom;
+	margin-top: -50px;
 	color: #468a58;
 	font-weight: bold;
 	font-size: 40px;
 	font-style: italic;
-	text-shadow: 0 0 1px #a00;
-  line-height: 0px;
+	line-height: 1.2em;
+	text-shadow: 0 0 2px #a00;
 }
 
 ::-webkit-input-placeholder {
@@ -169,6 +232,8 @@ section.card h2 {
 	font-size: 40px;
 	font-weight: bold;
 	padding: 15px 0 30px 0;
+	color: #a00;
+	text-shadow: 0 0 2px rgb(50,50,50);
 }
 
 section.card h3 {
@@ -186,6 +251,7 @@ section.card h3 {
 	top: 15px;
 	color: #fff;
 	line-height: 1em;
+	text-shadow: 0 0 2px rgb(50,50,50);
 }
 	section.loser h3 {
 		background: rgb(40, 40, 40);
@@ -205,6 +271,7 @@ section.card ul.github {
 
 section.card ul.github li{
 	display: inline;
+	white-space: nowrap;
 }
 
 section.card ul.github li:first-child {
