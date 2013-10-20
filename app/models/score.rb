@@ -13,7 +13,7 @@ class Score < ActiveRecord::Base
 
       # update status
       update_attribute :result, score
-      update_attribute :expires_at, DateTime.now + metric.expires_at
+      update_attribute :expires_at, metric.expires_at
 
       # return the score
       metric.score
