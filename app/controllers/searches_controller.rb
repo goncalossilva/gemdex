@@ -26,7 +26,7 @@ class SearchesController < ApplicationController
         format.html { redirect_to @search, notice: 'Search was successfully created.' }
         # format.json { render action: 'show', status: :created, location: @search }
       else
-        format.html { redirect_to root_url, alert: @search.errors }
+        format.html { redirect_to root_url(anchor: 'search'), alert: @search.errors }
         # format.json { render json: @search.errors, status: :unprocessable_entity }
       end
     end
