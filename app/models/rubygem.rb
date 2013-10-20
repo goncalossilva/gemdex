@@ -22,7 +22,7 @@ class Rubygem < ActiveRecord::Base
   def refresh_score
     unless queued
       update_attribute :queued, true
-      delay.update_score
+      update_score
     end
   end
 
