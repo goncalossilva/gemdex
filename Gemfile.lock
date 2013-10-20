@@ -1,6 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    RedCloth (4.2.9)
     actionmailer (4.0.0)
       actionpack (= 4.0.0)
       mail (~> 2.5.3)
@@ -28,6 +29,7 @@ GEM
     addressable (2.3.5)
     arel (4.0.0)
     atomic (1.1.14)
+    awesome_print (1.2.0)
     builder (3.1.4)
     capistrano (2.15.5)
       highline
@@ -46,6 +48,8 @@ GEM
     execjs (2.0.2)
     faraday (0.8.8)
       multipart-post (~> 1.2.0)
+    github-markdown (0.5.5)
+    github-markup (0.7.5)
     high_voltage (2.0.0)
     highline (1.6.20)
     hike (1.2.3)
@@ -76,6 +80,8 @@ GEM
     octokit (2.4.0)
       sawyer (~> 0.5.1)
     polyglot (0.3.3)
+    quiet_assets (1.0.2)
+      railties (>= 3.1, < 5.0)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -138,13 +144,18 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  RedCloth
+  awesome_print
   capistrano (~> 2.15)
   coffee-rails (~> 4.0.0)
+  github-markdown
+  github-markup
   high_voltage
   jbuilder (~> 1.2)
   jquery-rails
   mysql2
   octokit (~> 2.0)
+  quiet_assets
   rails (= 4.0.0)
   sass-rails (~> 4.0.0)
   sdoc

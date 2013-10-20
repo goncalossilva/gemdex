@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131019160206) do
+ActiveRecord::Schema.define(version: 20131020162828) do
 
   create_table "battles", force: true do |t|
     t.integer  "rubygem_x_id"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20131019160206) do
     t.string   "query"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "results"
   end
 
 end

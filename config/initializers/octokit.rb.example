@@ -1,0 +1,5 @@
+# Provide authentication credentials
+Octokit.configure do |c|
+  c.client_id = 'YOUR_CLIENT_ID'
+  c.client_secret = 'YOUR_CLIENT_SECRET'
+end

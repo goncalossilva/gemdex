@@ -55,3 +55,15 @@ end
 # for static pages
 gem 'high_voltage'
 gem 'octokit', '~> 2.0'
+
+# for metrics development
+gem 'awesome_print'
+
+# for documentation analysis
+gem 'github-markup'
+gem 'github-markdown' # markdown for github-markup
+gem 'RedCloth' # textile for github-markup
+
+group :development do
+  gem "quiet_assets"
+end
