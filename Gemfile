@@ -63,3 +63,7 @@ gem 'awesome_print'
 gem 'github-markup'
 gem 'github-markdown' # markdown for github-markup
 gem 'RedCloth' # textile for github-markup
+
+group :development do
+  gem "quiet_assets"
+end
