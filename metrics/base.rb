@@ -3,5 +3,5 @@
 require '../config/application'
 require '../config/initializers/octokit'
 
-repo =  Octokit.repository('rails/rails')
+repo =  Octokit.repository 'rails/rails'
 ap repo.attrs

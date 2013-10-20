@@ -1,9 +1,4 @@
 #!/usr/bin/env ruby
-#
-# ratio issues abertos vs. fechados e tempo relativo
-#
-#   - média do tempo de resolução de issues
-#   - % abertos vs. fechados
 
 require '../config/application'
 require '../config/initializers/octokit'
