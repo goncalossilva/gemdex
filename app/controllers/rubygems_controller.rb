@@ -1,5 +1,5 @@
 class RubygemsController < ApplicationController
-  before_action :set_rubygem, only: [:show]
+  before_action :set_rubygem, only: [:show, :ready]
   # before_action :set_rubygem, only: [:show, :edit, :update, :destroy]
 
   # GET /rubygems
@@ -13,6 +13,17 @@ class RubygemsController < ApplicationController
   def show
     if @rubygem.score_expired?
       @rubygem.refresh_score
+    end
+  end
+
+  # GET /rubygems/1.json
+  def ready
+    respond_to do |format|
+      format.html { redirect_to @rubygem }
+      format.json do
+        status = { ready: @rubygem.score_expired? }
+        render json: status.to_json
+      end
     end
   end
 

@@ -2,7 +2,9 @@ Gemdex::Application.routes.draw do
   resources :battles, only: [:show, :create]
   resources :searches, only: [:show, :create]
 
-  resources :rubygems, only: [:show, :create]
+  resources :rubygems, only: [:show, :create] do
+    get 'ready', on: :member, as: :ready
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
