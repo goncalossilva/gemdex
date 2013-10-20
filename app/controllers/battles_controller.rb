@@ -26,7 +26,11 @@ class BattlesController < ApplicationController
   def create
     rubygem_x = Rubygem.find_or_create_by(battle_params[:rubygem_x_attributes])
     rubygem_y = Rubygem.find_or_create_by(battle_params[:rubygem_y_attributes])
+
     @battle = Battle.find_or_create_with_gems(rubygem_x, rubygem_y)
+
+    rubygem_x.refresh_score if rubygem_x.score_expired?
+    rubygem_y.refresh_score if rubygem_y.score_expired?
 
     respond_to do |format|
       if @battle.save

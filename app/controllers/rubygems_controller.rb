@@ -11,9 +11,7 @@ class RubygemsController < ApplicationController
   # GET /rubygems/1
   # GET /rubygems/1.json
   def show
-    if @rubygem.score_expired?
-      @rubygem.refresh_score
-    end
+    @rubygem.refresh_score if @rubygem.score_expired?
   end
 
   # GET /rubygems/1.json
