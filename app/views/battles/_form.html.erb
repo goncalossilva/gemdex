@@ -1,0 +1,10 @@
+<%= form_for @battle, html: { class: "battle" } do |f| %>
+  <%= f.fields_for :rubygem_x do |builder| %>
+    <%= builder.text_field :name, placeholder: "Gem #1" %>
+  <% end %>
+  <span>vs</span>
+  <%= f.fields_for :rubygem_y do |builder| %>
+    <%= builder.text_field :name, placeholder: "Gem #2" %>
+  <% end %>
+  <input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;"/>
+<% end %>

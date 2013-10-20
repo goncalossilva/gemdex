@@ -1,4 +1,12 @@
-<h1>GemDex, the Homepage</h1>
-<%= render 'home/forms/browse' %>
-<%= render 'home/forms/battle' %>
-<%= link_to t('global.browse'), "#" %> <span>|</span> <%= link_to t('global.battle'), "#" %>
+<%= render 'extras/alerts' %>
+
+<div class="input">
+  <%= render 'searches/form' %>
+  <%= render 'battles/form' %>
+  <nav>
+  	<ul>
+      <li><%= link_to t('global.search'), "#", id: "search", class: "on toggle-mode" %></li>
+      <li><%= link_to t('global.battle'), "#", id: "battle", class: "toggle-mode" %></li>
+  	</ul>
+  </nav>
+</div>
