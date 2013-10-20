@@ -41,9 +41,7 @@ ratio = open_count / total_count
 
 @resolution_times = []
 closed_issues.each do |issue|
-  if issue.closed_at < issue.created_at
-    next
-  end
+  next if issue.closed_at < issue.created_at
   closing_time = ((issue.closed_at - issue.created_at) / 1.day).to_i
   @resolution_times.push closing_time
 end
