@@ -1,16 +1,15 @@
 <h2><%= rubygem.name %></h2>
 <h3>79</h3>
 
-<p>by <strong>Francisco</strong></p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et dictum tortor. Cras lobortis eleifend bibendum. Etiam scelerisque rutrum dui, ut viverra felis fringilla nec.</p>
+<!-- <p>at <strong><%#= rubygem.full_name %></strong></p> -->
+<p><%= rubygem.description %></p>
 
 <ul class="github">
 	<li><h4><a href="#">Github</a></h4></li>
-	<li>Last Commit <strong>Yesterday</strong></li>
-	<li>Issues <strong>40</strong></li>
-	<li>Pull reps <strong>40</strong></li>
-	<li>Starers <strong>10</strong></li>
-	<li>watchers <strong>50</strong></li>
+	<li>Last Commit <strong><%= time_ago_in_words(rubygem.pushed_at) %></strong></li>
+	<li>Issues <strong><%= rubygem.open_issues %></strong></li>
+	<li>Pull reps <strong><%= rubygem.forks %></strong></li>
+	<li>watchers <strong><%= rubygem.watchers %></strong></li>
 </ul>
 
 <ul class="charts">

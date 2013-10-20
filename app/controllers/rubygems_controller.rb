@@ -70,6 +70,6 @@ class RubygemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def rubygem_params
-      params.require(:rubygem).permit(:name)
+      params.require(:rubygem).permit(:name, :full_name, :description, :watchers, :pushed_at, :forks, :open_issues)
     end
 end
