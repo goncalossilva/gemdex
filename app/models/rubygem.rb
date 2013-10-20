@@ -1,8 +1,8 @@
 class Rubygem < ActiveRecord::Base
   validates_presence_of :name
-  validates_uniqueness_of :name
 
   serialize :categories_karma
+  serialize :metadata
 
   has_many :metric_results
 
@@ -13,11 +13,7 @@ class Rubygem < ActiveRecord::Base
   def score
     {
       karma: karma,
-      categories_karma: {
-        activity: activity_karma,
-        social: social_karma,
-        etiquette: etiquette_karma
-      }
+      categories_karma: categories_karma
     }
   end
 
@@ -57,36 +53,43 @@ class Rubygem < ActiveRecord::Base
   end
 
   def update_score
-    categories = Metric.AVAILABLE_CATEGORIES
-    category_maximum_score = Hash.new(0)
-    category_scores = Hash.new(0)
-    categories_karma = Hash.new(0)
+    tries = 0
+    begin
+      categories = Metric::AVAILABLE_CATEGORIES
+      category_maximum_score = Hash.new(0)
+      category_scores = Hash.new(0)
+      categories_karma = Hash.new(0)
 
-    categories.each do |category|
-      available_metric_results.each do |metric|
-        category_maximum_score[category] += metric.weight(category) * 10
+      categories.each do |category|
+        available_metric_results.each do |metric|
+          category_maximum_score[category] += metric.weight(category) * 10
+        end
       end
-    end
 
-    categories.each do |category|
-      available_metric_results.each do |metric|
-        category_scores[category] += metric.weight(category) * metric.score
+      categories.each do |category|
+        available_metric_results.each do |metric|
+          category_scores[category] += metric.weight(category) * metric.score
+        end
       end
+
+      categories.each do |category|
+        categories_karma[category] += category_scores[category] / category_maximum_score[category].to_f * 100
+      end
+
+      # set average karma
+      transaction do
+        update_attribute :karma, (categories_karma.values.inject(:+) / categories_karma.length)
+        update_attribute :categories_karma, categories_karma
+      end
+
+    # we don't have much time and need to deal with STUPID network errors
+    rescue
+      tries += 1
+      retry if tries <= 3
+    ensure
+      # reset status
+      update_attribute :queued, false
     end
-
-    categories.each do |category|
-      categories_karma += category_scores[category] / category_maximum_score[category].to_f * 100
-    end
-
-
-    # set average karma
-    transaction do
-      update_attribute :karma, (categories_karma.values.inject(:+) / categories_karma.length)
-      update_attribute :categories_karma, categories_karma
-    end
-
-    # reset status
-    update_attribute :queued, false
   end
 
 end

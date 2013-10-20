@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131020222552) do
+ActiveRecord::Schema.define(version: 20131020221326) do
 
   create_table "battles", force: true do |t|
     t.integer  "rubygem_x_id"
@@ -39,9 +39,10 @@ ActiveRecord::Schema.define(version: 20131020222552) do
   create_table "metric_results", force: true do |t|
     t.string   "kind"
     t.float    "result"
-    t.datetime "expires_at"
+    t.datetime "expires_at", default: '0000-01-01 00:00:00'
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "rubygem_id"
   end
 
   create_table "rubygems", force: true do |t|
