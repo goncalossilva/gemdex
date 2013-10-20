@@ -31,5 +31,8 @@ $ ->
       toggleMode($(this))
     return false
 
-  # $("#new_battle").submit ->
-  #   $('.overlay').show()
+  $("#new_battle").submit ->
+    $('#battle-overlay').show()
+
+  $("#new_search").submit ->
+    $('#search-overlay').show()
