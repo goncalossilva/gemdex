@@ -1,0 +1,7 @@
+metrics_classnames:
+  - 'GitHubMetrics::HasReleasesMetric'
+  - 'GitHubMetrics::IssuesResolutionMetric'
+  - 'GitHubMetrics::StarersMetric'
+  - 'GitHubMetrics::HasNiceToHaveFilesMetric'
+  - 'GitHubMetrics::CommitFrequencyMetric'
+  - 'GitHubMetrics::DocumentationCodeRatioMetric'
