@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131019160206) do
+ActiveRecord::Schema.define(version: 20131020155020) do
 
   create_table "battles", force: true do |t|
     t.integer  "rubygem_x_id"
@@ -22,6 +22,14 @@ ActiveRecord::Schema.define(version: 20131019160206) do
 
   create_table "rubygems", force: true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "scores", force: true do |t|
+    t.string   "kind"
+    t.float    "result"
+    t.datetime "expires_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
