@@ -25,7 +25,11 @@ $ ->
   setInitialMode()
   renderInput()
   focusForm()
+
   $('a.toggle-mode').bind 'click', ->
     if !$(this).hasClass "on"
       toggleMode($(this))
     return false
+
+  # $("#new_battle").submit ->
+  #   $('.overlay').show()
