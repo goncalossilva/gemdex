@@ -5,7 +5,7 @@ class Rubygem < ActiveRecord::Base
   has_many :scores
 
   def score_expired?
-    queued || available_metrics.any? &:expired?
+    queued || available_metrics.any?(&:expired?)
   end
 
   def score
