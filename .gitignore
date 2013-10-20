@@ -66,3 +66,5 @@ tmtags
 
 # Ignore credentials
 config/initializers/octokit.rb
+
+.gemrc

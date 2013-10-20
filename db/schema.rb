@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 20131020194733) do
     t.string   "query"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "results"
   end
 
 end

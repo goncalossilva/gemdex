@@ -11,5 +11,375 @@
  *= require_self
  */
 
+@import "reset.css.scss";
 @import "settings.css.scss";
 @import "home.css.scss";
+@import "searches.css.scss";
+@import url(http://fonts.googleapis.com/css?family=Dosis:500,700);
+
+@font-face {
+	font-family: 'Din-OSP';
+	src: url('Din-OSP.eot');
+	src: url('Din-OSP.eot?iefix') format('eot'),
+    	url('Din-OSP.woff') format('woff'),
+    	url('Din-OSP.ttf') format('truetype'),
+    	url('Din-OSP.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Din-Overlay';
+	src: url('Din-Overlay.eot');
+	src: url('Din-Overlay.eot?iefix') format('eot'),
+    	url('Din-Overlay.woff') format('woff'),
+    	url('Din-Overlay.ttf') format('truetype'),
+		url('Din-Overlay.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+html {
+	background: #a00 url(bg.png) center center;
+	font-family: dosis, helvetica, arial, sans-serif;
+	height: 100%;
+}
+
+h1 a, h2, h3 {
+	font-family: 'Din-OSP', helvetica, arial, sans-serif;
+}
+h1 a .colorfont-overlay,
+h2 .colorfont-overlay,
+h3 .colorfont-overlay {
+	font-family: 'Din-Overlay', helvetica, arial, sans-serif;
+}
+
+body {
+	color: rgb(40, 40, 40);
+	font-size: 16px;
+	line-height: 1.3;
+	position: relative;
+	min-height: 100%;
+	height: 1px;
+}
+
+div.page {
+	background: #fff url(balao.gif) no-repeat 0 0;
+	width: 780px;
+	margin: 0 auto;
+	padding: 0 110px 0;
+	border-right: 5px solid #e7653d;
+	border-left: 5px solid #e7653d;
+	-webkit-animation: up 30s infinite;
+	-moz-animation: up 30s infinite;
+	animation: up 30s infinite;
+	min-height: 100%;
+	overflow: auto;
+}
+
+@-webkit-keyframes up {
+	0% {background-position: -300px -300px;}
+	50% {background-position: 110% -300px;}
+	55% {background-position: 110% 90%;}
+	90% {background-position: 90% bottom;}
+	100% {background-position: 110% 90%}
+}
+
+h1 {
+	padding: 80px 0 80px;
+	text-align: center;
+}
+
+h1 a {
+	display: inline-block;
+	font-size: 120px;
+	text-align: center;
+	color: #a00;
+	text-decoration: none;
+	position: relative;
+}
+
+h1 a:before {
+		content: " ";
+	background: url(logo-blue.png) no-repeat;
+	width: 90px;
+	height: 56px;
+	position: absolute;
+	z-index: 0;
+	display: block;
+	bottom: 23px;
+	left: -32px;
+}
+
+h1 a:after {
+	content: " ";
+	background: url(logo.png) no-repeat;
+	width: 90px;
+	height: 56px;
+	position: absolute;
+	z-index: 1000;
+	display: block;
+	bottom: 25px;
+	right: -75px;
+}
+
+h1 a .colorfont-overlay {
+	color: 	#e7653d;
+		text-shadow: 0 0 2px rgb(50,50,50);
+
+}
+
+form {
+	text-align: center;
+}
+
+header + form {
+	margin-top: 40px;
+}
+
+form input {
+	color: #fff;
+	background: #8bc53e;
+	border: 0;
+	font-size: 20px;
+	display: inline-block;
+	width: 650px;
+	margin: 0 auto;
+	padding: 10px;
+	text-align: center;
+	border-radius: 2px;
+	box-shadow: inset 0 0 5px rgba(50, 50, 50, .5);
+	vertical-align: bottom;
+	font-family: dosis, helvetica, arial, sans-serif;
+}
+
+input:focus { outline-color: $primary-color; }
+
+form.battle input {
+	width: 300px;
+}
+
+form span {
+	padding: 0 10px;
+	position: relative;
+	display: inline-block;
+	vertical-align: bottom;
+	margin-top: -50px;
+	color: #468a58;
+	font-weight: bold;
+	font-size: 40px;
+	font-style: italic;
+	line-height: 1.2em;
+	text-shadow: 0 0 2px #a00;
+}
+
+::-webkit-input-placeholder {
+   color: #fff;
+}
+:-moz-input-placeholder {
+   color: #fff;
+}
+::-moz-input-placeholder {
+   color: #fff;
+}
+:-ms-input-placeholder {
+   color: #fff;
+}
+
+nav {
+	text-align: center;
+	padding: 30px 0 60px;
+}
+nav li {
+	color: #e7653d;
+	display: inline;
+	font-weight: bold;
+}
+nav li:before {
+	content: "· ";
+}
+nav li:first-child:before {
+	content: none;
+}
+nav li a {
+	color: #e7653d;
+	text-decoration: none;
+	-webkit-transition: all .2s;
+	transition: all .2s;
+}
+nav li a.on,
+nav li a:hover {
+	color: #a00;
+}
+
+/* cards */
+
+section.card {
+	width: 310px;
+	box-shadow: 1px 1px 5px rgba(0,0,0,.5);
+	padding: 20px 20px 50px;
+	position: relative;
+	float: left;
+	margin: 0 20px 100px;
+	background: #fff;
+}
+
+section.loser *{
+	opacity: .5;
+}
+
+section.card h2 {
+	font-size: 40px;
+	font-weight: bold;
+	padding: 15px 0 30px 0;
+	color: #a00;
+	text-shadow: 0 0 2px rgb(50,50,50);
+}
+
+section.card h3 {
+	font-size: 40px;
+	font-weight: bold;
+	border-radius: 1000px;
+	background: #a00;
+	float: right;
+	padding: 20px;
+	width: 40px;
+	height: 40px;
+	text-align: center;
+	position: absolute;
+	right: 15px;
+	top: 15px;
+	color: #fff;
+	line-height: 1em;
+	text-shadow: 0 0 2px rgb(50,50,50);
+}
+	section.loser h3 {
+		background: rgb(40, 40, 40);
+	}
+
+section.card p {
+	margin-bottom: 10px;
+}
+
+section.card ul {
+	font-size: 12px;
+}
+
+section.card ul.github {
+	margin: 20px 0 50px;
+}
+
+section.card ul.github li{
+	display: inline;
+	white-space: nowrap;
+}
+
+section.card ul.github li:first-child {
+	float: left;
+	width: 31px;
+	height: 30px;
+	margin: 0 10px 0 0;
+	display: block;
+}
+
+section.card ul.github li:first-child a {
+	display: block;
+	width: 31px;
+	height: 0;
+	padding-top: 30px;
+	overflow: hidden;
+	background: url(github.png) no-repeat;
+}
+
+section.card ul.charts li {
+	box-shadow: inset 0 0 3px rgba(0,0,0,.3);
+	border-radius: 4px;
+	padding: 5px 0;
+	margin-bottom: 10px;
+	color: rgba(255,255,255,.5);
+}
+section.card ul.charts li.activity{
+	background: #fb916e;
+}
+section.card ul.charts li.social{
+	background: #8bc53e;
+}
+section.card ul.charts li.etiquette{
+	background: #a00;
+}
+section.card ul.charts strong {
+	color: #fff;
+	margin-left: 5px;
+}
+
+/* end card */
+strong {
+	font-weight: bold
+}
+
+footer {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	overflow: visible;
+	margin: 50px 0 0;
+	background: #ead2c3;
+}
+
+footer.open {
+	border-top: 5px solid #a00;
+}
+
+footer p.more {
+	height: 50px;
+	overflow: hidden;
+	margin: -50px 0 0;
+}
+
+footer.open p.more {
+	margin: -55px 0 0;
+}
+
+footer p.more a {
+	display: block;
+	width: 50px;
+	height: 0;
+	margin: 0 auto -5px;
+	padding-top: 55px;
+	background: #a00 url(open.png) no-repeat center 20px;
+	box-shadow: inset 0 0 4px #000;
+}
+
+footer.open p.more a {
+	background-image: url(close.png);
+}
+
+footer > ul {
+	margin: 0 auto;
+	overflow: auto;
+	padding: 0 110px;
+	width: 780px;
+}
+
+footer > ul > li {
+	margin: 80px 20px 30px;
+	float: left;
+	width: 350px;
+}
+
+footer >ul > li + li {
+	text-align: right
+}
+
+footer h3 {
+	color: #a00;
+	font-weight: bold;
+	font-size: 20pt;
+	margin-bottom: 20px;
+}
+
+footer a {
+	color: rgb(40, 40, 40);
+	text-decoration: none;
+}

@@ -33,7 +33,7 @@ class BattlesController < ApplicationController
         format.html { redirect_to @battle, notice: 'Battle was successfully created.' }
         # format.json { render action: 'show', status: :created, location: @battle }
       else
-        format.html { redirect_to root_url, alert: @battle.errors }
+        format.html { redirect_to root_url(anchor: 'battle'), alert: @battle.errors }
         # format.json { render json: @battle.errors, status: :unprocessable_entity }
       end
     end

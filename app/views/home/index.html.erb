@@ -1,5 +1,20 @@
-<h1>GemDex, the Homepage</h1>
 <%= render 'extras/alerts' %>
-<%= render 'searches/form' %>
-<%= render 'battles/form' %>
-<%= link_to t('global.search'), "#", class: "active toggle-mode" %> <span>|</span> <%= link_to t('global.battle'), "#", class: "toggle-mode" %>
+
+<div class="input">
+  <%= render 'searches/form' %>
+  <%= render 'battles/form' %>
+  <nav>
+  	<ul>
+      <li><%= link_to t('global.search'), "#", id: "search", class: "on toggle-mode" %></li>
+      <li><%= link_to t('global.battle'), "#", id: "battle", class: "toggle-mode" %></li>
+  	</ul>
+  </nav>
+</div>
+
+<div id="battle-overlay" class="overlay">
+  <%= image_tag 'pistols.gif' %>
+</div>
+
+<div id="search-overlay" class="overlay">
+  <%= image_tag 'spinner.gif' %>
+</div>

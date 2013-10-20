@@ -4,7 +4,19 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 #new_battle { display: none; }
+.input { display: none; }
 
-a:link, a:visited, a:hover, a:active, a:focus { color: $primary-color; }
-a { text-decoration: none; }
-a.active { font-weight: bold; }
+.overlay {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.85);
+  z-index: 9999;
+}
+
+.overlay img {
+  width: 100%;
+}

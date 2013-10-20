@@ -1,8 +1,12 @@
-<p id="notice"><%= notice %></p>
+<%= render 'searches/form' %>
+<br /><br />
 
-<p>
-  <strong>Query:</strong>
-  <%= @search.query %>
-</p>
-
-<%= link_to 'Back', root_url %>
+<div class="search-results">
+<% unless @search.results.empty? %>
+  <% @search.results.each do |i| %>
+    <%= render 'searches/show/item', item: i %>
+  <% end %>
+<% else %>
+  <p><center>NO SEARCH RESULTS</center></p>
+<% end %>
+</div>
