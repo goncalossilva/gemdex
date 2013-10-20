@@ -197,16 +197,26 @@ nav li {
 }
 nav li:before {
 	content: "· ";
+	padding: 0 10px;
 }
 nav li:first-child:before {
 	content: none;
 }
+
 nav li a {
 	color: #e7653d;
 	text-decoration: none;
 	-webkit-transition: all .2s;
 	transition: all .2s;
+	background: url(battle.gif) no-repeat right top;
+	padding: 0 50px 0 0;
 }
+
+nav li:first-child a {
+	background: url(search.gif) no-repeat 17px 0;
+	padding: 0 0 0 50px;
+}
+
 nav li a.on,
 nav li a:hover {
 	color: #a00;
@@ -388,4 +398,43 @@ footer h3 {
 footer a {
 	color: rgb(40, 40, 40);
 	text-decoration: none;
+}
+
+/* errors */
+
+#error_explanation {
+	text-align: center;
+	background: #a00;
+	color: #fff;
+	width: 300px;
+	margin: 0 auto 10px;
+	border-radius: 3px;
+	padding: 10px;
+	position: relative;
+}
+
+#error_explanation:before {
+	content: " ";
+	position: absolute;
+	bottom: -5px;
+	border-top: 5px solid #a00;
+	border-right: 5px solid transparent;
+	border-left: 5px solid transparent;
+}
+
+/* overlays */
+#battle-overlay,
+#search-overlay {
+	text-align: center;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	background: rgba(50,50,50,.8)
+}
+
+#battle-overlay img,
+#search-overlay img {
+	width: auto;
+	height: auto;
+	margin-top: 20%;
 }
