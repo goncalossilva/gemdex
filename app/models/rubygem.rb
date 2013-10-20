@@ -2,6 +2,8 @@ class Rubygem < ActiveRecord::Base
   validates_presence_of :name
   validates_uniqueness_of :name
 
+  serialize :categories_karma
+
   has_many :metric_results
 
   def score_expired?
@@ -12,10 +14,9 @@ class Rubygem < ActiveRecord::Base
     {
       karma: karma,
       categories_karma: {
-        # TODO add categories
-        activity: 0,
-        social: 0,
-        etiquette: 0
+        activity: activity_karma,
+        social: social_karma,
+        etiquette: etiquette_karma
       }
     }
   end
@@ -56,13 +57,33 @@ class Rubygem < ActiveRecord::Base
   end
 
   def update_score
-    # gather scores from different metrics
-    scores = @available_metrics.collect &:score
+    categories = Metric.AVAILABLE_CATEGORIES
+    category_maximum_score = Hash.new(0)
+    category_scores = Hash.new(0)
+    categories_karma = Hash.new(0)
 
-    # set average score
-    # TODO we should really set a real value
-    # TODO we should really set a real value for categories
-    update_attribute :karma, 10
+    categories.each do |category|
+      available_metric_results.each do |metric|
+        category_maximum_score[category] += metric.weight(category) * 10
+      end
+    end
+
+    categories.each do |category|
+      available_metric_results.each do |metric|
+        category_scores[category] += metric.weight(category) * metric.score
+      end
+    end
+
+    categories.each do |category|
+      categories_karma += category_scores[category] / category_maximum_score[category].to_f * 100
+    end
+
+
+    # set average karma
+    transaction do
+      update_attribute :karma, (categories_karma.values.inject(:+) / categories_karma.length)
+      update_attribute :categories_karma, categories_karma
+    end
 
     # reset status
     update_attribute :queued, false
