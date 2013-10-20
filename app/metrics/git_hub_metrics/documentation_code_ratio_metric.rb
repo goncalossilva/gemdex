@@ -47,7 +47,7 @@ module GitHubMetrics
         total_char_count = strip_tags(html).length
       end
 
-      code_char_count >= total_char_count * ADEQUATE_CODE_DOC_RATIO
+      code_char_count >= total_char_count * OPTIMAL_CODE_DOC_RATIO
 
       # If the code/documentation ratio is 0.5, then perfect.
       # Otherwise degrade logarithmically.

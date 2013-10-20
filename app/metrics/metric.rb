@@ -9,7 +9,7 @@ class Metric
   end
 
   def score
-    [0, [10, get_score].min].max
+    [0, [10, calculate_score].min].max
   end
 
   # Override and return the metric's score, in the (0..100) range.

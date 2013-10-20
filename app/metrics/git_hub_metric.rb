@@ -1,7 +1,7 @@
 class GitHubMetric < Metric
   def initialize(metadata)
     @client = Octokit::Client.new
-    @repo = metadata.repository_uri
+    @repo = metadata[:repository_uri]
   end
 
   def rate_limit
