@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131020155020) do
+ActiveRecord::Schema.define(version: 20131020162559) do
 
   create_table "battles", force: true do |t|
     t.integer  "rubygem_x_id"
@@ -24,6 +24,12 @@ ActiveRecord::Schema.define(version: 20131020155020) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "karma"
+    t.integer  "activity_karma"
+    t.integer  "social_karma"
+    t.integer  "etiquette_karma"
+    t.boolean  "queued",          default: false
+    t.text     "metadata"
   end
 
   create_table "scores", force: true do |t|
