@@ -37,23 +37,31 @@ class DocumentationCodeRatioCounter
       end
 
       # Clone wiki in temp dir
-      `git clone --depth 1 git@github.com:#{repo_url}.wiki.git #{tmpdir}/wiki`
+      repo =  Octokit.repository('rails/rails')
+      if repo.has_wiki
+        `git clone --depth 1 git@github.com:#{repo_url}.wiki.git #{tmpdir}/wiki`
+      end
 
+      # Get all markdown/textile documentation
       html = ""
       Dir.glob("#{tmpdir}/**/*.*").each do |path|
         html << GitHub::Markup.render(path).html_safe
       end
       html.gsub!(/\n/, '')
 
-      code_char_count = html.scan(/<code.*?>(.*?)<\/code>/m).flatten.map do |s|
-        strip_tags(s)
-      end.map(&:length).inject(:+) || 0
+      # Count code characters
+      code_char_count = 0
+      html.scan(/<code.*?>(.*?)<\/code>/m).flatten.map do |code|
+        code_char_count += strip_tags(code).length
+      end
 
+      # Count total characters
       total_char_count = strip_tags(html).length
 
-      puts total_char_count
-      puts code_char_count
-      puts code_char_count / total_char_count.to_f
+      # Print info
+      puts "Total characters: #{total_char_count}"
+      puts "Code characters: #{code_char_count}"
+      puts "Code/total ratio: #{code_char_count / total_char_count.to_f}"
     end
   end
 end
