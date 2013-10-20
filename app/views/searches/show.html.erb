@@ -7,8 +7,10 @@
     <%= render 'searches/show/item', item: i %>
   <% end %>
 <% else %>
-  <p><center>NO SEARCH RESULTS</center></p>
+  <h3 class="no-results">NO SEARCH RESULTS</h3>
 <% end %>
 </div>
 
-<%= image_tag "spinner1.gif", class: 'spinner' %>
+<div id="search-overlay" class="overlay">
+  <%= image_tag 'spinner1.gif' %>
+</div>
