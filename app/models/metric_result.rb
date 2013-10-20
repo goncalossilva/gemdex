@@ -7,8 +7,7 @@ class MetricResult < ActiveRecord::Base
 
   def score
     if expired?
-      # get a metric instance and its score for this gem
-      metric = kind.constantize.new rubygem.metadata
+      # get the metric score for this gem
       score = metric.score
 
       # update status
@@ -20,5 +19,15 @@ class MetricResult < ActiveRecord::Base
     else
       result
     end
+  end
+
+  def weight category
+    metric.weight category
+  end
+
+  private
+
+  def metric
+    @metric ||= kind.constantize.new rubygem.metadata
   end
 end
