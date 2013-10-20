@@ -59,6 +59,9 @@ gem 'octokit', '~> 2.0'
 # for metrics development
 gem 'awesome_print'
 
+# background jobs
+gem 'delayed_job_active_record', '~> 4.0'
+
 # for documentation analysis
 gem 'github-markup'
 gem 'github-markdown' # markdown for github-markup
