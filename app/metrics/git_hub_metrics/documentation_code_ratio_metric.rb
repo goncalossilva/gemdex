@@ -4,7 +4,9 @@ module GitHubMetrics
   class DocumentationCodeRatioMetric < GitHubMetric
     include ActionView::Helpers::SanitizeHelper
 
-    def score
+    OPTIMAL_CODE_DOC_RATIO = 0.5
+
+    def calculate_score
       total_char_count  = 0
       code_char_count   = 0
 
@@ -45,8 +47,15 @@ module GitHubMetrics
         total_char_count = strip_tags(html).length
       end
 
-      # TODO
-      puts "#{self.class.name} done!"
+      code_char_count >= total_char_count * ADEQUATE_CODE_DOC_RATIO
+
+      # If the code/documentation ratio is 0.5, then perfect.
+      # Otherwise degrade logarithmically.
+      if total_char_count > 0
+        10 * Math.log10(1 + (10 / OPTIMAL_CODE_DOC_RATIO - 1 / OPTIMAL_CODE_DOC_RATIO) * (code_char_count / total_char_count.to_f))
+      else
+        0
+      end
     end
 
     def weight(category)
@@ -58,3 +67,13 @@ module GitHubMetrics
     end
   end
 end
+
+# Devise: 0.338453816169089
+# Carrierwave: 0.49669611986169804
+# Mongoid Sequence: 0.44802207911683534
+# Paperclip: 0.3417452574525745
+# Active Merchant: 0.21226198376639951
+# Delayed job: 0.20850118483412322
+# Acts As Paranoid: 0.43928847641144625
+# Spree: 0.09749739311783108
+# Rails: 0.006367881618048396

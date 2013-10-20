@@ -2,7 +2,7 @@ require 'github/markup'
 
 module GitHubMetrics
   class HasReleasesMetric < GitHubMetric
-    def score
+    def calculate_score
       # Check if releases were ever used
       has_releases = !@client.releases(@repo).empty?
 
@@ -15,8 +15,7 @@ module GitHubMetrics
         end
       end
 
-      # TODO
-      puts "#{self.class.name} done!"
+      has_releases ? 10 : 0
     end
 
     def weight(category)
