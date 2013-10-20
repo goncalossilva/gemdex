@@ -10,12 +10,8 @@ module GitHubMetrics
       puts "#{self.class.name} done!"
     end
 
-    def categories
-      [:social]
-    end
-
-    def categories_weights
-      [8]
+    def weight(category)
+      {activity: 0, social: 8, etiquette: 0}[category]
     end
 
     def expires_at
