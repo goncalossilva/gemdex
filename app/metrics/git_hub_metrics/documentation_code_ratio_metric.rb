@@ -1,17 +1,18 @@
 require 'github/markup'
+
 module GitHubMetrics
   class DocumentationCodeRatioMetric < GitHubMetric
     include ActionView::Helpers::SanitizeHelper
 
     def score
+      total_char_count  = 0
+      code_char_count   = 0
+
       # Create temp dir where the README and wiki will be stored
       Dir.mktmpdir do |tmpdir|
-        total_char_count = 0
-        code_char_count = 0
-
         begin
           # Get README and store it in temp dir
-          readme = Octokit.readme(@repo)
+          readme = @client.readme @repo
           File.open(File.join(tmpdir, readme.name), 'w') do |file|
             file.write(
               Base64.decode64(readme.content).encode(
@@ -25,10 +26,8 @@ module GitHubMetrics
         end
 
         # Clone wiki in temp dir
-        repo =  Octokit.repository(@repo)
-        if repo.has_wiki
-          `git clone --depth 1 git@github.com:#{@repo}.wiki.git #{tmpdir}/wiki`
-        end
+        repository = @client.repository @repo
+        `git clone --depth 1 git@github.com:#{@repo}.wiki.git #{tmpdir}/wiki` if repository.has_wiki
 
         # Get all markdown/textile documentation
         html = ""
@@ -44,21 +43,18 @@ module GitHubMetrics
 
         # Count total characters
         total_char_count = strip_tags(html).length
-
-        # TODO
       end
+
+      # TODO
+      puts "#{self.class.name} done!"
     end
 
-    def categories
-      [:etiquette]
-    end
-
-    def categories_weights
-      [8]
+    def weight(category)
+      {activity: 0, social: 2, etiquette: 8}[category]
     end
 
     def expires_at
-      1.day.from_now
+      12.hours.from_now
     end
   end
 end

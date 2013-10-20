@@ -1,5 +1,7 @@
 class Metric
   AVAILABLE_CATEGORIES = [:activity, :social, :etiquette]
+  SINCE_DATE = 1.year.ago
+  RECENT_SINCE_DATE = 2.months.ago
 
   # Override and return the metric's score, in the (1..100) range.
   # Must be integer.
