@@ -1,0 +1,11 @@
+<%= form_for(@battle) do |f| %>
+  <%= f.fields_for :rubygem_x do |builder| %>
+    <%= builder.text_field :name %>
+  <% end %>
+
+  <%= f.fields_for :rubygem_y do |builder| %>
+    <%= builder.text_field :name %>
+  <% end %>
+
+  <%= f.submit t("global.go") %>
+<% end %>

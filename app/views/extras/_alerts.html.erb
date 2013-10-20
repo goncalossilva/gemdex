@@ -1,0 +1,10 @@
+<% if flash[:alert] %>
+  <div id="error_explanation">
+    <!-- <h2><%#= pluralize(flash[:alert].count, "error") %> prohibited this search from being saved:</h2> -->
+    <ul>
+    <% flash[:alert].full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
