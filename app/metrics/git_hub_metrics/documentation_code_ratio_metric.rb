@@ -58,7 +58,7 @@ module GitHubMetrics
     end
 
     def expires_at
-      1.day.from_now
+      12.hours.from_now
     end
   end
 end

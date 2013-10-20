@@ -28,7 +28,7 @@ module GitHubMetrics
     end
 
     def expires_at
-      1.week.from_now
+      3.days.from_now
     end
   end
 end
