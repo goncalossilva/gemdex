@@ -1,13 +1,14 @@
 class Metric
-  CATEGORIES = [:activity, :social, :etiquette]
+  AVAILABLE_CATEGORIES = [:activity, :social, :etiquette]
 
-  # Override and return the metric's score, in the (1..100) range. Can be a float.
+  # Override and return the metric's score, in the (1..100) range.
+  # Must be integer.
   def score
     raise "Override and return the metric's score"
   end
 
   # Override and return the metric's categories. Has to be an array with one or
-  # more symbols listed in CATEGORIES.
+  # more symbols listed in AVAILABLE_CATEGORIES.
   def categories
     raise "Override and return the metric's categories"
   end
