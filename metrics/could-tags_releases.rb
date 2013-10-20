@@ -6,7 +6,7 @@ require '../config/initializers/octokit'
 print "user/repo: "
 repo_url = gets.chomp
 
-has_releases = Octokit.releases(repo_url).size > 0
+has_releases = !Octokit.releases(repo_url).empty?
 if !has_releases
   tags = Octokit.tags repo_url
   tags.each do |tag|
