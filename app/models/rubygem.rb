@@ -1,4 +1,6 @@
 class Rubygem < ActiveRecord::Base
+  after_create :generate_metadata
+
   validates_presence_of :name
 
   serialize :categories_karma
@@ -25,6 +27,10 @@ class Rubygem < ActiveRecord::Base
   end
 
   private
+
+  def generate_metadata
+    update_attribute :metadata, { repository_uri: full_name }
+  end
 
   def available_metric_results
     # read the list of available metrics from configuration file
