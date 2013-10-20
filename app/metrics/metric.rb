@@ -4,6 +4,10 @@ class Metric
   SINCE_DATE = 1.year.ago
   RECENT_SINCE_DATE = 2.months.ago
 
+  def initialize(metadata)
+    @metadata = metadata
+  end
+
   def score
     [0, [10, get_score].min].max
   end
@@ -24,12 +28,6 @@ class Metric
   # the call, add the validity time, and return a Time object.
   def expires_at
     raise "Override and return the metric's expiration time"
-  end
-
-protected
-
-  def normalize_score(score)
-
   end
 
 end
