@@ -8,6 +8,7 @@ window.toggleMode = (mode) ->
   mode.addClass "on"
   $("form").toggle()
   $('.input').fadeIn(500)
+  focusForm()
 
 window.setInitialMode = ->
   mode = window.location.hash.substring(1);
@@ -17,10 +18,13 @@ window.setInitialMode = ->
 window.renderInput = ->
   $('.input').fadeIn(500)
 
+window.focusForm = ->
+  $('form').find('input[type=text],textarea,select').filter(':visible:first').focus()
+
 $ ->
   setInitialMode()
   renderInput()
-
+  focusForm()
   $('a.toggle-mode').bind 'click', ->
     if !$(this).hasClass "on"
       toggleMode($(this))
