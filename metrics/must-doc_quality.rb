@@ -40,7 +40,7 @@ Dir.mktmpdir do |tmpdir|
   end
 
   # Clone wiki in temp dir
-  repo =  Octokit.repository('rails/rails')
+  repo =  Octokit.repository(repo_url)
   if repo.has_wiki
     `git clone --depth 1 git@github.com:#{repo_url}.wiki.git #{tmpdir}/wiki`
   end
