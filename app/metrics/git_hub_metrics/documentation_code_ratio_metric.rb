@@ -1,5 +1,4 @@
 require 'github/markup'
-
 module GitHubMetrics
   class DocumentationCodeRatioMetric < GitHubMetric
     include ActionView::Helpers::SanitizeHelper
