@@ -2,7 +2,13 @@ require 'github/markup'
 
 module GitHubMetrics
   class HasNiceToHaveFilesMetric < GitHubMetric
-    def score
+    # Total: 10
+    README_SCORE = 3.5
+    LICENSE_SCORE = 3.5
+    CONTRIBUTING_SCORE = 2.0
+    CHANGELOG_SCORE = 1.0
+
+    def calculate_score
       files = @client.contents(@repo, :path => '/')
 
       has_readme        = false
@@ -17,8 +23,12 @@ module GitHubMetrics
         has_changelog     |= /CHANGELOG/     === file.path
       end
 
-      # TODO
-      puts "#{self.class.name} done!"
+      # Sum points based on important file presence
+      0 +
+      (has_readme ? README_SCORE : 0) +
+      (has_license ? LICENSE_SCORE : 0) +
+      (has_contributing ? CONTRIBUTING_SCORE : 0) +
+      (has_changelog ? CHANGELOG_SCORE : 0)
     end
 
     def weight(category)
