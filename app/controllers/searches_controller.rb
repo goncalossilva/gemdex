@@ -19,11 +19,11 @@ class SearchesController < ApplicationController
   # POST /searches
   # POST /searches.json
   def create
-    @search = Search.find_or_initialize_by(search_params)
+    @search = Search.find_or_initialize_by(search_params) # will cache search results on after_create
 
     respond_to do |format|
       if @search.save
-        format.html { redirect_to @search, notice: 'Search was successfully created.' }
+        format.html { redirect_to @search }
         # format.json { render action: 'show', status: :created, location: @search }
       else
         format.html { redirect_to root_url(anchor: 'search'), alert: @search.errors }
