@@ -11,6 +11,7 @@ class SearchesController < ApplicationController
   # GET /searches/1
   # GET /searches/1.json
   def show
+    @new_search = Search.new(query: @search.query) # because you can search again on the results page
   end
 
   # GET /searches/1/edit

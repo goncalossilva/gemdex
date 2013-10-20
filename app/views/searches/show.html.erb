@@ -1,5 +1,12 @@
+<%= render 'searches/form' %>
+<br /><br />
+
 <div class="search-results">
-<% @search.results.each do |i| %>
-  <%= render 'searches/show/item', item: i %>
+<% unless @search.results.empty? %>
+  <% @search.results.each do |i| %>
+    <%= render 'searches/show/item', item: i %>
+  <% end %>
+<% else %>
+  <p><center>NO SEARCH RESULTS</center></p>
 <% end %>
 </div>
