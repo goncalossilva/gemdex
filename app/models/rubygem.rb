@@ -2,7 +2,7 @@ class Rubygem < ActiveRecord::Base
   validates_presence_of :name
   validates_uniqueness_of :name
 
-  has_many :scores
+  has_many :metric_results
 
   def score_expired?
     queued || available_metrics.any?(&:expired?)

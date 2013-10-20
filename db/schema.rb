@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131020165624) do
+ActiveRecord::Schema.define(version: 20131020182408) do
 
   create_table "battles", force: true do |t|
     t.integer  "rubygem_x_id"
@@ -36,6 +36,14 @@ ActiveRecord::Schema.define(version: 20131020165624) do
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
 
+  create_table "metric_results", force: true do |t|
+    t.string   "kind"
+    t.float    "result"
+    t.datetime "expires_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "rubygems", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -46,14 +54,6 @@ ActiveRecord::Schema.define(version: 20131020165624) do
     t.integer  "etiquette_karma"
     t.boolean  "queued",          default: false
     t.text     "metadata"
-  end
-
-  create_table "scores", force: true do |t|
-    t.string   "kind"
-    t.float    "result"
-    t.datetime "expires_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "searches", force: true do |t|

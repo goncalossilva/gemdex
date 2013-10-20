@@ -1,4 +1,4 @@
-class Score < ActiveRecord::Base
+class MetricResult < ActiveRecord::Base
   belongs_to :rubygem
 
   def expired?
