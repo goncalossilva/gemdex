@@ -1,5 +1,5 @@
 <h2><%= rubygem.name %></h2>
-<h3>79</h3>
+<h3><%= rubygem.karma %></h3>
 
 <!-- <p>at <strong><%#= rubygem.full_name %></strong></p> -->
 <p><%= rubygem.description %></p>
@@ -13,7 +13,7 @@
 </ul>
 
 <ul class="charts">
-	<li class="activity" style="width:88%"><strong>88</strong> activity</li>
-	<li class="social" style="width:58%"><strong>58</strong> social</li>
-	<li class="etiquette" style="width:44%"><strong>44</strong> etiquette</li>
+	<li class="activity" style="width:<%= rubygem.categories_karma[:activity].round %>%"><strong><%= rubygem.categories_karma[:activity].round %></strong> activity</li>
+	<li class="social" style="width:<%= rubygem.categories_karma[:social].round %>%"><strong><%= rubygem.categories_karma[:social].round %></strong> social</li>
+	<li class="etiquette" style="width:<%= rubygem.categories_karma[:etiquette].round %>%"><strong><%= rubygem.categories_karma[:etiquette].round %></strong> etiquette</li>
 </ul>
